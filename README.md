@@ -43,4 +43,10 @@ Pages :
 
 8- Donation data page for charities :To accept donation requests and add families to donate to them
 
+____________________________________________________________________
+
+The purpose of the site :
+
+Make the site an approved platform like Ehsan
+
 
