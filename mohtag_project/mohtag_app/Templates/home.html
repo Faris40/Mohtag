@@ -16,9 +16,9 @@
         <a href="/"></a>
         <a href="{% url 'mohtag_app:about' %}"> من نحن</a>
         <a href="/"></a>
-        <a href="/">التسجيل للتصدق</a>
+        <a href="{% url 'accounts:user_login' %}">التسجيل للتصدق</a>
         <a href="/"></a>
-        <a href="/">التسجيل للجمعيات</a>
+        <a href="{% url 'accounts:charity_login' %}">التسجيل للجمعيات</a>
       </nav>
     </header>
   
