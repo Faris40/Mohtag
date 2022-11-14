@@ -27,9 +27,13 @@
     <main>
       <div class="home-page">
         <div class="block">
-          <h1>من فضائل الصدقة</h1>
-          <p class="intro">قال صلى الله عليه وسلم : (صنائعُ المعروفِ تقي مصارعَ السوءِ و الآفاتِ و الهلكاتِ، وأهلُ المعروفِ في الدنيا همْ أهلُ المعروفِ في الآخرةِ)</p>
-          <p>تصدق بغير المال</p>
+          {% for f in family %}
+
+          <h4>{{ f.family_name }}</h4>
+          <p>{{ f.family_dis }}</p>
+        
+
+          {% endfor %}
           <a href="/" class="button">تصدق هنا</a>
         </div>
         <div class="block">
