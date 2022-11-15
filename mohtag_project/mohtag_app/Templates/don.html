@@ -7,32 +7,94 @@
 {% block base  %}
 
 <div class="wrapper"> 
-    <header class="site-header ">
+    <header class="site-header">
       <nav>
         <a href="{% url 'mohtag_app:home' %}"><strong>محتاج</strong></a> | 
         <a href="/">Home</a>
         <a href="/"></a>
-        <a href="{% url 'mohtag_app:family' %}">تبرع</a>
+        <a href="{% url 'mohtag_app:new_family' %}">تبرع</a>
         <a href="/"></a>
         <a href="{% url 'mohtag_app:about' %}"> من نحن</a>
-        <a href="/"></a>
-        <a href="{% url 'mohtag_app:new_family' %}">اضافة عائلة</a>
         <a href="/"></a>
         <a href="{% url 'accounts:user_login' %}">التسجيل للتصدق</a>
         <a href="/"></a>
         <a href="{% url 'accounts:charity_login' %}">التسجيل للجمعيات</a>
-        <a href="/"></a>
-        <a href="{% url 'accounts:charity_login' %}">عرض الصدقات</a>
       </nav>
     </header>
   
     <main>
       <div class="home-page">
         <div class="block">
-          <h1>من فضائل الصدقة</h1>
-          <p class="intro">قال صلى الله عليه وسلم : (صنائعُ المعروفِ تقي مصارعَ السوءِ و الآفاتِ و الهلكاتِ، وأهلُ المعروفِ في الدنيا همْ أهلُ المعروفِ في الآخرةِ)</p>
-          <p>تصدق بغير المال</p>
-          <a href="/" class="button">تصدق هنا</a>
+            <div class="simple">
+                <form method="POST">
+                  {% csrf_token %}
+                  <label>نوع الصدقة  <span class="required"></span></label>
+                  <input type="text" name="donation_type">
+                  <label>وصف الصدقة  <span class="required"></span></label>
+                <textarea name="donation_dis" id="" cols="62" rows="5"></textarea>
+                <label>حالة الصدقة  <span class="required"></span></label>
+                  <input type="text" name="donation_cond">
+                  <label>رقم التواصل  <span class="required"></span></label>
+                  <input type="text" name="donation_phone">
+
+                  <input type="submit" value="تصدق">
+                </form>
+                <style>
+                    font-family Arial, Tahoma
+
+
+.simple {
+    width: 85%;
+    margin: 20px auto
+}
+
+form {
+    background-color: #00000043;
+    padding: 30px;
+    overflow: hidden;
+}
+
+label, input {
+    display: block;
+}
+
+label {
+    margin-bottom: 10px;
+    font-size: 20px
+}
+
+form .required {
+    color: rgb(255, 255, 255);
+    font-size: 22px
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 15px;
+    width: 93%;
+    border: 0;
+    border-radius: 5px;
+    border-bottom: 1px solid #DDD;
+}
+
+form input[type="submit"] {
+    display: inline-block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    color: #FFF;
+    background-color: #000000;
+    font-size: 20px;
+}
+
+::placeholder {
+    color: #ADADAD;
+    padding: 5px;
+    font-size: 18px;
+}
+                </style>
+              </div>
+              
         </div>
         <div class="block">
           <img src="{% static 'images/home.png'  %}" alt="An illustration of me in profile">
@@ -77,6 +139,7 @@ footer { background-color: #000000; color: rgba(255, 255, 255, 0.6); padding: 5%
 
 @media screen and (max-width: 45em) {
   .home-page { display: block; }
+  
 }
   </style>
 

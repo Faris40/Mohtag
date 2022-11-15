@@ -27,14 +27,33 @@
     <main>
       <div class="home-page">
         <div class="block">
-          {% for f in family %}
-
-          <h4>{{ f.family_name }}</h4>
-          <p>{{ f.family_dis }}</p>
-        
-
-          {% endfor %}
+          <div id="container" class="container">
+            <div class="header card">
+              <div class="page-width">
+                <div class="logotext"><i class="fad fa-rocket"></i> العائلات</div>
+                <a class="mytwitter fab fa-twitter" href="https://twitter.com/Osorpenke" target="_blank" rel="no-refer"></a>
+              </div>
+            </div>
+            <div class="content">
+              
+              {% for f in family %}
+                <div class="page card-b page-width">
+                <div id="post1"></div>
+                <h4>{{f.family_name}}</h4>
+                <h5>{{f.family_dis}} <a href=""></a></h5> <h5><a href="{% url 'mohtag_app:don' %}" class="fas fa-hashtag"> تبرع  </a></h5>
+                <h5>__________________________________________________________________</h5>
+                <p></p>
+                {% endfor %}
+              </div>
+              
+            </div>
+            <div class="darkmode card-b fas fa-moon"></div>
+          </div>
+          <div class="clip"></div>
           <a href="/" class="button">تصدق هنا</a>
+          <style>
+            
+          </style>
         </div>
         <div class="block">
           <img src="{% static 'images/home.png'  %}" alt="An illustration of me in profile">
