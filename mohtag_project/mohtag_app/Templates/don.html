@@ -10,15 +10,23 @@
     <header class="site-header">
       <nav>
         <a href="{% url 'mohtag_app:home' %}"><strong>محتاج</strong></a> | 
-        <a href="/">Home</a>
+        <a href="{% url 'mohtag_app:home' %}">Home</a>
         <a href="/"></a>
-        <a href="{% url 'mohtag_app:new_family' %}">تبرع</a>
+        <a href="{% url 'mohtag_app:family' %}">تصدق</a>
         <a href="/"></a>
         <a href="{% url 'mohtag_app:about' %}"> من نحن</a>
         <a href="/"></a>
-        <a href="{% url 'accounts:user_login' %}">التسجيل للتصدق</a>
+        <a href="{% url 'mohtag_app:new_family' %}">اضافة عائلة</a>
+       
         <a href="/"></a>
         <a href="{% url 'accounts:charity_login' %}">التسجيل للجمعيات</a>
+        <a href="/"></a>
+        <a href="{% url 'mohtag_app:view_don' %}">عرض الصدقات</a>
+        <a href="/"></a>
+        <a href="/">|</a>
+        {% if request.user.is_authenticated %} <a  href="{% url 'accounts:user_logout' %}">  تسجيل خروج   {% endif %} </a>
+        <a href="/"></a>
+        {% if request.user.is_authenticated %}<a href="{% url 'mohtag_app:home' %}">  اهلا {{request.user.first_name}} </a>  {% else %} <a href="{% url 'accounts:user_login' %}">التسجيل للتصدق</a>  {% endif %}
       </nav>
     </header>
   
@@ -29,13 +37,13 @@
                 <form method="POST">
                   {% csrf_token %}
                   <label>نوع الصدقة  <span class="required"></span></label>
-                  <input type="text" name="donation_type">
+                  <input type="text" name="donation_type" placeholder="ملابس/اثاث" >
                   <label>وصف الصدقة  <span class="required"></span></label>
-                <textarea name="donation_dis" id="" cols="62" rows="5"></textarea>
+                <textarea name="donation_dis" id="" cols="62" rows="5" placeholder="اثاث لغرفة بسريرين"></textarea>
                 <label>حالة الصدقة  <span class="required"></span></label>
-                  <input type="text" name="donation_cond">
+                  <input type="text" name="donation_cond" placeholder="جديدة/ممتازة/متوسطة">
                   <label>رقم التواصل  <span class="required"></span></label>
-                  <input type="text" name="donation_phone">
+                  <input type="text" name="donation_phone" placeholder="05XXXXXXXX">
 
                   <input type="submit" value="تصدق">
                 </form>

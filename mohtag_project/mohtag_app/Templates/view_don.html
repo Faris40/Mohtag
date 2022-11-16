@@ -10,30 +10,43 @@
     <header class="site-header">
       <nav>
         <a href="{% url 'mohtag_app:home' %}"><strong>محتاج</strong></a> | 
-        <a href="/">Home</a>
+        <a href="{% url 'mohtag_app:home' %}">Home</a>
         <a href="/"></a>
-        <a href="{% url 'mohtag_app:family' %}">تبرع</a>
+        <a href="{% url 'mohtag_app:family' %}">تصدق</a>
         <a href="/"></a>
         <a href="{% url 'mohtag_app:about' %}"> من نحن</a>
         <a href="/"></a>
         <a href="{% url 'mohtag_app:new_family' %}">اضافة عائلة</a>
-        <a href="/"></a>
-        <a href="{% url 'accounts:user_login' %}">التسجيل للتصدق</a>
+       
         <a href="/"></a>
         <a href="{% url 'accounts:charity_login' %}">التسجيل للجمعيات</a>
+        <a href="/"></a>
+        <a href="{% url 'mohtag_app:view_don' %}">عرض الصدقات</a>
+        <a href="/"></a>
+        <a href="/">|</a>
+        {% if request.user.is_authenticated %} <a  href="{% url 'accounts:user_logout' %}">  تسجيل خروج   {% endif %} </a>
+        <a href="/"></a>
+        {% if request.user.is_authenticated %}<a href="{% url 'mohtag_app:home' %}">  اهلا {{request.user.first_name}} </a>  {% else %} <a href="{% url 'accounts:user_login' %}">التسجيل للتصدق</a>  {% endif %}
       </nav>
     </header>
   
     <main>
       <div class="home-page">
         <div class="block">
-          <h1>من فضائل الصدقة</h1>
-          <p class="intro">قال صلى الله عليه وسلم : (صنائعُ المعروفِ تقي مصارعَ السوءِ و الآفاتِ و الهلكاتِ، وأهلُ المعروفِ في الدنيا همْ أهلُ المعروفِ في الآخرةِ)</p>
-          <p>تصدق بغير المال</p>
-          <a href="/" class="button">تصدق هنا</a>
+          {% for don in view_don %}
+                <div class="page card-b page-width">
+                <div id="post1"></div>
+                <h4> نوع الصدقة : {{don.donation_type}} </h4>
+                <h6> وصف الصدقة : {{don.donation_dis}} </h6>
+                <h6> حالة الصدقة : {{don.donation_cond}}</h6>
+                <h6> رقم التواصل : {{don.donation_phone}}</h6>
+                <a href="{% url 'mohtag_app:donation_del' don.id %}">حذف التصدق</a>
+                <h5>__________________________________________________________________</h5>
+                <p></p>
+                {% endfor %}
         </div>
         <div class="block">
-          <img src="{% static 'images/home.png'  %}" alt="An illustration of me in profile">
+          <img src="" alt="">
         </div>
       </div>
     </main>

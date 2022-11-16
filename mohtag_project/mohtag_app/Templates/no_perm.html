@@ -7,7 +7,7 @@
 {% block base  %}
 
 <div class="wrapper"> 
-    <header class="site-header">
+    <header class="site-header ">
       <nav>
         <a href="{% url 'mohtag_app:home' %}"><strong>محتاج</strong></a> | 
         <a href="{% url 'mohtag_app:home' %}">Home</a>
@@ -16,10 +16,8 @@
         <a href="/"></a>
         <a href="{% url 'mohtag_app:about' %}"> من نحن</a>
         <a href="/"></a>
+        <a href="/">|</a>
         <a href="{% url 'mohtag_app:new_family' %}">اضافة عائلة</a>
-       
-        <a href="/"></a>
-        <a href="{% url 'accounts:charity_login' %}">التسجيل للجمعيات</a>
         <a href="/"></a>
         <a href="{% url 'mohtag_app:view_don' %}">عرض الصدقات</a>
         <a href="/"></a>
@@ -33,48 +31,11 @@
     <main>
       <div class="home-page">
         <div class="block">
-          <img src="{% static 'images/no_perm.png'  %}" alt="">
+          <h1> عذرا لاتملك الاذن  </h1>
+          <p class="intro">   اذا تم التسجيل كجمعية الرجاء التواصل مع الايميل emeil@hotmail.com لتوثيق الجمعية</p>
+          <a href="{% url 'mohtag_app:home' %}" class="button">العودة للصفحة الرئيسية </a>
         </div>
-        <div class="block">
-          <div id="container" class="container">
-            <div class="header card">
-              <div class="page-width">
-                <div class="logotext"><i class="fad fa-rocket"></i> العائلات</div>
-                <a class="mytwitter fab fa-twitter" href="" target="_blank" rel="no-refer"></a>
-              </div>
-            </div>
-    
-
-
-            
-            <div class="content">
-              
-              {% for f in family %}
-                <div class="page card-b page-width">
-                <div id="post1"></div>
-                <h4>{{f.family_name}}</h4>
-                <h5>{{f.family_dis}} <a href=""></a></h5> <h5><a href="{% url 'mohtag_app:don' %}" class="fas fa-hashtag"> تصدق  </a></h5>
-                
-                <h5>__________________________________________________________________</h5>
-                <p></p>
-                {% endfor %}
-              </div>
-    
-              
-              
-            </div>
-            
-            <div class="darkmode card-b fas fa-moon"></div>
-          </div>
-          <div class="clip"></div>
-         
-          <style>
-            
-          </style>
-        </div>
-        <div class="block">
-          <img src="" alt="">
-        </div>
+       
       </div>
     </main>
   

@@ -13,6 +13,7 @@ class Family(models.Model):
 
 class Donation(models.Model):
 
+
     donation_type = models.CharField(max_length=128)
 
     donation_dis = models.TextField()
